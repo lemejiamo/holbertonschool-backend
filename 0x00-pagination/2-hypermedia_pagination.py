@@ -48,22 +48,19 @@ class Server:
         """
         gets hyper information , better pagination and more info
         """
-        # definimos los campos de la respuesta
+        # define response fields
         keys = ('page_size', 'page', 'data', 'next_page',
                 'prev_page', 'total_pages')
 
         # calls the method get_page to aquieres the set
         data = self.get_page(page, page_size)
 
-        # calcual el tamaño del conjunto
+        # obtains the size of the set
         size = len(self.__dataset)
 
-        # usamos el tamaño de la pagina, y el numero de pagina para calcular
-        #         obtener datos
-        #         pagina siguiente
-        #         pagina anterior
-        #         total de paginas
+        total_pages = math.ceil(size/page_size)
 
+        # create the response
         response = {}
         for key in keys:
             if key == 'page_size':
@@ -76,7 +73,10 @@ class Server:
                 response.update({key: data})
 
             if key == 'next_page':
-                response.update({key: (page+1)})
+                if (page + 1) >= total_pages:
+                    response.update({key: None})
+                else:
+                    response.update({key: (page+1)})
 
             if key == 'prev_page':
                 if (page - 1) > 0:
@@ -85,7 +85,6 @@ class Server:
                     response.update({key: None})
 
             if key == 'total_pages':
-                total_pages = math.ceil(size/page_size)
                 response.update({key: total_pages})
 
         return response
