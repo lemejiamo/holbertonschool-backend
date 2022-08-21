@@ -3,7 +3,6 @@
 Simple Helper Function
 """
 import csv
-import math
 from typing import List, Tuple
 
 
@@ -33,7 +32,7 @@ class Server:
 
         assert page.__class__.__name__ == 'int'
         assert page_size.__class__.__name__ == 'int'
-        assert (page > 0 )
+        assert (page > 0)
         assert (page_size > 0)
 
         self.dataset()
@@ -54,5 +53,3 @@ def index_range(page: int, page_size: int) -> Tuple:
     final_index = page * page_size
     initial_index = final_index - page_size
     return (initial_index, final_index)
-
-
