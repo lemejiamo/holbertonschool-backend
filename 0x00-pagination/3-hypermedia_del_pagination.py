@@ -4,8 +4,7 @@ Deletion-resilient hypermedia pagination
 """
 
 import csv
-import math
-from typing import List
+from typing import List, Dict
 
 
 class Server:
@@ -33,7 +32,6 @@ class Server:
         """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
-            truncated_dataset = dataset[:1000]
             print(dataset)
             print(type(dataset))
             print(len(dataset))
