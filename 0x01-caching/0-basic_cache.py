@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Base Caching module
+"""Base Caching module
 """
 
 from BaseCaching import BaseCaching
@@ -31,4 +30,4 @@ class BasicCache(BaseCaching):
         """
         Return the valur from the given key if exists
         """
-        return (self.cache_data.get(key))
+        return self.cache_data.get(key)
