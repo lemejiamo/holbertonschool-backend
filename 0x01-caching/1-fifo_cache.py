@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Base Caching module
+"""FIFO Cache module
 """
-
 from base_cache import BaseCaching
 
 
@@ -10,7 +9,6 @@ class FIFOCache(BaseCaching):
       - Simple class to implement a cache system
       - First in First out system
     """
-
     def __init__(self):
         """
         CONSTRUCTOR
@@ -27,7 +25,6 @@ class FIFOCache(BaseCaching):
                 deleteKey = list(self.cache_data.keys())[0]
                 print('DISCARD: {}'.format(deleteKey))
                 self.cache_data.pop(deleteKey)
-
         else:
             pass
 
